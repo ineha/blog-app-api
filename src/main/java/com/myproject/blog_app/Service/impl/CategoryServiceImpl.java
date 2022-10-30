@@ -34,6 +34,7 @@ public class CategoryServiceImpl implements CategoryService {
         Category category = this.categoryRepo.findById(categoryId).orElseThrow(() -> new ResourceNotFoundException("Category", "id", categoryId));
         category.setCategoryName(categoryDto.getCategoryName());
         category.setCategoryDesc(categoryDto.getCategoryDesc());
+        this.categoryRepo.save(category);
         CategoryDto map = modelMapper.map(category, CategoryDto.class);
         return map;
     }

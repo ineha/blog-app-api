@@ -1,6 +1,7 @@
 package com.myproject.blog_app.Service;
 
 import com.myproject.blog_app.PayLoad.PostDto;
+import com.myproject.blog_app.PayLoad.PostResponse;
 import com.myproject.blog_app.entities.Post;
 
 import java.util.List;
@@ -14,7 +15,7 @@ public interface PostService {
     //delete
     void deletePost(Integer postId);
     //get all posts
-    List<Post> getAllPost();
+    PostResponse getAllPost(Integer pageNumber, Integer pageSize,String sortBy);
     //get Post by Id
     Post getPostById(Integer postId);
     //get all post by category
