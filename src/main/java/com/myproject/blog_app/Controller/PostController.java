@@ -37,7 +37,7 @@ public class PostController {
  this API is to get all posts. where we can apply query parameters given below
  pageNumber: It represents a particular page in which elements could be represented(default value is 0)
  pageSize: It represents how many elements a page should contains(default value is 5)
- sortBy: It represents the sorting of elemnts bases on parameter
+ sortBy: It represents the sorting of elements bases on parameter
      */
 
     @GetMapping("/")
@@ -76,6 +76,13 @@ public class PostController {
     public ResponseEntity<ApiResponse> updatePost(@PathVariable("postId")Integer postId){
         this.postService.deletePost(postId);
         return new ResponseEntity<ApiResponse>(new ApiResponse("post has been deleted successfully",true),HttpStatus.OK);
+    }
+
+    //search method
+    @GetMapping("/search/{keywords}")
+    public ResponseEntity<List<Post>> searchPostByTitle(@PathVariable("keywords") String keywords){
+        List<Post> posts = this.postService.searchPosts(keywords);
+        return new ResponseEntity<>(posts,HttpStatus.OK);
     }
 
 }

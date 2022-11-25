@@ -97,4 +97,10 @@ public class PostServiceImpl implements PostService {
         List<Post> byUser = this.postRepo.findByUser(user);
         return byUser;
     }
+
+    @Override
+    public List<Post> searchPosts(String keyword) {
+        List<Post> byTitleContaining = this.postRepo.findByTitleContaining(keyword);
+        return byTitleContaining;
+    }
 }
